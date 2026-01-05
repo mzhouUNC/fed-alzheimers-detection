@@ -1,0 +1,48 @@
+{
+  "paths": {
+    "data_dir": "process_data",
+    "save_dir": "result",
+    "run_naming": "datetime"
+  },
+  "data": {
+    "img_size": 224,
+    "num_classes": 4,
+    "batch_size": 32,
+    "num_workers": 1,
+    
+    "subset_ratio": 1,
+
+    "fed_mode": true,
+    "num_clients": 4,
+    "fed_split": "quantity",
+    "fed_dirichlet_alpha": 0.5
+  },
+  "training": {
+    "epochs": 20,
+    "lr": 0.001,
+    "weight_decay": 0.0001,
+    "patience": 5,
+    "mixed_precision": true,
+    "seed": 42
+  },
+  "model": {
+    "fuse_type": "parallel",
+    "dropout": 0.2,
+    "exact_heavy_fc": true,
+    "c1_out_channels": 128,
+    "c2_out_channels": 128,
+    "serial_out_channels": 256
+  },
+  "imbalance": {
+    "use_class_weights": true,
+    "weights_mode": "auto",
+    "manual_counts": [8960, 6464, 9600, 8960],
+    "use_weighted_sampler": false
+  },
+  "fed_training": {
+    "rounds": 25,
+    "local_epochs": 1,
+    "fraction_clients": 1.0,
+    "note": "Only for fed training"
+  }
+}
